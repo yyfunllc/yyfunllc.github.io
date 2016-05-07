@@ -184,7 +184,7 @@
                         onload="
                             if(submitted) {
                                 hasGotReplied = true;
-                                if( $( '#hidden_iframe' ).contents().find('title').text() == 'Thanks!' ) {
+                                if( $( '#hidden_iframe' ).contents().find('.ss-resp-message').text() == 'Your response has been recorded.' ) {
                                     clearTimeout(errorSubmitted);
                                     $( '#submitting' ).hide();
                                     window.alert( 'Feedback sent. Thank you for your feedback :) ' );
@@ -195,8 +195,10 @@
                         ">
                         </iframe>
                         <!--div class="ss-form"-->
-                        <form action="https://docs.google.com/forms/d/11K3KKlNXBF9wySfNOsz3FKzz7eu-i1PyAEano8xxlJk/formResponse" method="post"
+                        <form action="https://docs.google.com/forms/d/11K3KKlNXBF9wySfNOsz3FKzz7eu-i1PyAEano8xxlJk/formResponse" id="googleForm" method="post"
                         target="hidden_iframe" onsubmit="
+                            if(submitted)
+                                return false;
                             if(checkValid()) {
                                 submitted = true;
                                 hasGotReplied = false;
