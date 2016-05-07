@@ -187,6 +187,7 @@
                                     window.alert( 'Feedback sent. Thank you for your feedback :) ' );
                                 } else {
                                     window.alert( 'Sorry. We\'re temporarily unable to receive your feedback.');
+                                    console.log( $( '#hidden_iframe' ).contents().find('title').text() );
                                 }
                                 $( '#submitting' ).hide();
                             }
