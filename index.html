@@ -174,17 +174,38 @@
                         <p>Your feedback is important to us.  Feel free to leave your comment/suggestion here or just to say hi!</p>
 
 
-                        <script type="text/javascript">var submitted=false;</script>
-                        <iframe name="hidden_iframe" id="hidden_iframe"
-                        style="display:none;" onload="if(submitted)
-                        {window.location="index.html";}"></iframe>
+                        <script type="text/javascript">
+                            var submitted=false;
+                            var errorSubmitted;
+                        </script>
+                         
+                        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+                        onload="
+                            if(submitted) {
+                                clearTimeout(errorSubmitted);
+                                if( $( '#hidden_iframe' ).contents().find('title').text() == 'Thanks!' ) {
+                                    window.alert( 'Feedback sent. Thank you for your feedback :) ' );
+                                } else {
+                                    window.alert( 'Sorry. We\'re temporarily unable to receive your feedback.');
+                                }
+                                $( '#submitting' ).hide();
+                            }
+
+                        ">
+                        </iframe>
                         <!--div class="ss-form"-->
                         <form action="https://docs.google.com/forms/d/11K3KKlNXBF9wySfNOsz3FKzz7eu-i1PyAEano8xxlJk/formResponse" method="post"
                         target="hidden_iframe" onsubmit="
                             if(checkValid()) {
-                                window.alert( 'Feedback sent. Thank you for your feedback :) ' );
+                                submitted = true;
+                                $( '#submitting' ).show();
+                                errorSubmitted = setTimeout( function() { 
+                                    window.alert( 'Submission failed. Please check Internet connection. ' );
+                                    $( '#submitting' ).hide();
+                                } , 5000);
                                 return true;
                             }else {
+                                submitted = false;
                                 return false;
                             }
                         ">
@@ -272,10 +293,14 @@
                                 <div class="ss-item ss-navigate">
                                     <div id="navigation-table">
                                         <div class="ss-form-entry" id="navigation-buttons" dir="ltr">
-                                            <div class="col-lg-12">
+                                            <div class="col-lg-1">
                                                 <input type="submit" name="submit" value="Submit" id="ss-submit" class="jfk-button jfk-button-action ">
                                                 <div class="ss-password-warning ss-secondary-text"></div>
                                             </div>
+                                            <div class="col-lg-1">
+                                                <img src="img/loader.gif" id="submitting" style="display: none; width: 25px; height: 25px; ">
+                                            </div>
+                                            <div class="col-lg-10"></div>
                                         </div>
                                     </div>
                                 </div>
