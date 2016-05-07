@@ -177,38 +177,42 @@
                         <script type="text/javascript">
                             var submitted=false;
                             var errorSubmitted;
+                            var hasGotReplied=false;
                         </script>
                          
                         <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
                         onload="
                             if(submitted) {
-                                clearTimeout(errorSubmitted);
+                                hasGotReplied = true;
                                 if( $( '#hidden_iframe' ).contents().find('title').text() == 'Thanks!' ) {
+                                    clearTimeout(errorSubmitted);
+                                    $( '#submitting' ).hide();
                                     window.alert( 'Feedback sent. Thank you for your feedback :) ' );
-                                } else {
-                                    window.alert( 'Sorry. We\'re temporarily unable to receive your feedback.');
-                                    console.log( $( '#hidden_iframe' ).contents().find('title').text() );
-                                }
-                                $( '#submitting' ).hide();
+                                    submitted = false;
+                                } 
                             }
 
                         ">
                         </iframe>
                         <!--div class="ss-form"-->
-                        <form action="http://docs.google.com/forms/d/11K3KKlNXBF9wySfNOsz3FKzz7eu-i1PyAEano8xxlJk/formResponse" method="post"
+                        <form action="https://docs.google.com/forms/d/11K3KKlNXBF9wySfNOsz3FKzz7eu-i1PyAEano8xxlJk/formResponse" method="post"
                         target="hidden_iframe" onsubmit="
                             if(checkValid()) {
                                 submitted = true;
+                                hasGotReplied = false;
                                 $( '#submitting' ).show();
-                                errorSubmitted = setTimeout( function() { 
-                                    window.alert( 'Submission failed. Please check Internet connection. ' );
+                                errorSubmitted = setTimeout( function() {
+                                    if ( hasGotReplied ) {
+                                        window.alert( 'Sorry. We\'re temporarily unable to receive your comment.' );
+                                    } else {
+                                        window.alert( 'Submission failed. Please check Internet connection. ' );
+                                    }
                                     $( '#submitting' ).hide();
                                 } , 5000);
-                                return true;
                             }else {
                                 submitted = false;
-                                return false;
                             }
+                            return submitted;
                         ">
                         <ol role="list" class="ss-question-list" style="padding-left: 0">
                             <div class="row">
