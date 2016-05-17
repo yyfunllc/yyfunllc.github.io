@@ -31,23 +31,23 @@
     <!-- For checking the validation of form input-->
     <script> 
         var checkValid = function() {
-        if( $( "#entry_216361736" ).val() == null || $( "#entry_216361736" ).val().trim() == "" ){
-            window.alert( "Name field is required!" );
+            if( $( "#entry_216361736" ).val() == null || $( "#entry_216361736" ).val().trim() == "" ){
+                window.alert( "Name field is required!" );
+            }
+            else if( $( "#entry_1192660011" ).val() == null || $( "#entry_1192660011" ).val().trim() == "" ){
+                window.alert( "Email field is required!" );
+            }
+            else if( $( "#entry_1332990734" ).val() == null || $( "#entry_1332990734" ).val().trim() == "" ){
+                window.alert( "Message field is required!" );
+            }
+            else {
+                return true;
+            }
+            return false;
         }
-        else if( $( "#entry_1192660011" ).val() == null || $( "#entry_1192660011" ).val().trim() == "" ){
-            window.alert( "Email field is required!" );
-        }
-        else if( $( "#entry_1332990734" ).val() == null || $( "#entry_1332990734" ).val().trim() == "" ){
-            window.alert( "Message field is required!" );
-        }
-        else {
-            return true;
-        }
-        return false;
-    }
     </script>
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -179,171 +179,122 @@
                             var errorSubmitted;
                             var hasGotReplied=false;
                         </script>
-                         
+
                         <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
                         onload="
-                            if(submitted) {
-                                hasGotReplied = true;
-                                if( $( '#hidden_iframe' ).contents().find('.ss-resp-message').text() == 'Your response has been recorded.' ) {
-                                    clearTimeout(errorSubmitted);
-                                    $( '#submitting' ).hide();
-                                    window.alert( 'Feedback sent. Thank you for your feedback :) ' );
-                                    submitted = false;
-                                } 
-                            }
-
-                        ">
-                        </iframe>
-                        <!--div class="ss-form"-->
-                        <form action="https://docs.google.com/forms/d/11K3KKlNXBF9wySfNOsz3FKzz7eu-i1PyAEano8xxlJk/formResponse" id="googleForm" method="post"
-                        target="hidden_iframe" onsubmit="
-                            if(submitted)
-                                return false;
-                            if(checkValid()) {
-                                submitted = true;
-                                hasGotReplied = false;
-                                $( '#submitting' ).show();
-                                errorSubmitted = setTimeout( function() {
-                                    if ( hasGotReplied ) {
-                                        window.alert( 'Sorry. We\'re temporarily unable to receive your comment.' );
-                                    } else {
-                                        window.alert( 'Submission failed. Please check Internet connection. ' );
-                                    }
-                                    $( '#submitting' ).hide();
-                                } , 5000);
-                            }else {
+                        if(submitted) {
+                            hasGotReplied = true;
+                            if( $( '#hidden_iframe' ).contents().find('.ss-resp-message').text() == 'Your response has been recorded.' ) {
+                                clearTimeout(errorSubmitted);
+                                $( '#submitting' ).hide();
+                                window.alert( 'Feedback sent. Thank you for your feedback :) ' );
                                 submitted = false;
-                            }
-                            return submitted;
+                            } 
+                        }
+
                         ">
-                        <ol role="list" class="ss-question-list" style="padding-left: 0">
-                            <div class="row">
-                                <div class="ss-form-question errorbox-good" role="listitem">
-                                    <div dir="auto" class="ss-item ss-item-required ss-text">
-                                        <div class="ss-form-entry">
-                                            <div class="col-lg-4">
-                                                <label class="ss-q-item-label" for="entry_216361736">
-                                                    <div class="ss-q-title">Name
-                                                        <label for="itemView.getDomIdToLabel()" aria-label="(Required field)"></label>
-                                                        <span class="ss-required-asterisk" aria-hidden="true">*</span>
-                                                    </div>
-                                                    <div class="ss-q-help ss-secondary-text" dir="auto"></div>
-                                                </label>
-                                                <input type="text" name="entry.216361736" value="" class="form-control" id="entry_216361736" dir="auto" aria-label="Name  " aria-required="true" required="" title="">
-                                                <div class="error-message" id="1696683751_errorMessage"></div><br>
-                                                <div class="required-message" hidden="true"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> 
-                                <div class="ss-form-question errorbox-good" role="listitem">
-                                    <div dir="auto" class="ss-item ss-item-required ss-text">
-                                        <div class="ss-form-entry">
-                                            <div class="col-lg-4">
-                                                <label class="ss-q-item-label" for="entry_1192660011">
-                                                    <div class="ss-q-title">Email Address
-                                                        <label for="itemView.getDomIdToLabel()" aria-label="(Required field)"></label>
-                                                        <span class="ss-required-asterisk" aria-hidden="true">*</span>
-                                                    </div>
-                                                    <div class="ss-q-help ss-secondary-text" dir="auto"></div>
-                                                </label>
-                                                <input type="text" name="entry.1192660011" value="" class="form-control" id="entry_1192660011" dir="auto" aria-label="Email Address  " aria-required="true" required="" title="">
-                                                <div class="error-message" id="2055256698_errorMessage"></div><br>
-                                                <div class="required-message"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> 
-                                <div class="ss-form-question errorbox-good" role="listitem">
-                                    <div dir="auto" class="ss-item  ss-text">
-                                        <div class="ss-form-entry">
-                                            <div class="col-lg-4">
-                                                <label class="ss-q-item-label" for="entry_2129675146">
-                                                    <div class="ss-q-title">Phone Number
-                                                    </div>
-                                                    <div class="ss-q-help ss-secondary-text" dir="auto"></div>
-                                                </label>
-                                                <input type="text" name="entry.2129675146" value="" class="form-control" id="entry_2129675146" dir="auto" aria-label="Phone Number  " title="">
-                                                <div class="error-message" id="71819643_errorMessage"></div><br>
-                                                <div class="required-message"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> 
-                                <div class="ss-form-question errorbox-good" role="listitem">
-                                    <div dir="auto" class="ss-item ss-item-required ss-paragraph-text">
-                                        <div class="ss-form-entry">
-                                            <div class="col-lg-12">
-                                                <label class="ss-q-item-label" for="entry_1332990734">
-                                                    <div class="ss-q-title">Message
-                                                        <label for="itemView.getDomIdToLabel()" aria-label="(Required field)"></label>
-                                                        <span class="ss-required-asterisk" aria-hidden="true">*</span>
-                                                    </div>
-                                                    <div class="ss-q-help ss-secondary-text" dir="auto"></div>
-                                                </label>
-                                                <textarea name="entry.1332990734" rows="6" class="form-control" id="entry_1332990734" dir="auto" aria-label="Message  " aria-required="true" required="" width="800"></textarea>
-                                                <div class="error-message" id="1361904344_errorMessage"></div><br>
-                                                <div class="required-message"></div>
-                                            </div>
-                                        </div>
-                                    </div>
+                    </iframe>
+                    <!--div class="ss-form"-->
+                    <form action="https://docs.google.com/forms/d/11K3KKlNXBF9wySfNOsz3FKzz7eu-i1PyAEano8xxlJk/formResponse" id="googleForm" method="post"
+                    target="hidden_iframe" onsubmit="
+                    if(submitted)
+                        return false;
+                    if(checkValid()) {
+                        submitted = true;
+                        hasGotReplied = false;
+                        $( '#submitting' ).show();
+                        errorSubmitted = setTimeout( function() {
+                            if ( hasGotReplied ) {
+                                window.alert( 'Sorry. We\'re temporarily unable to receive your comment.' );
+                            } else {
+                                window.alert( 'Submission failed. Please check Internet connection. ' );
+                            }
+                            $( '#submitting' ).hide();
+                        } , 5000);
+                    }else {
+                        submitted = false;
+                    }
+                    return submitted;
+                    ">
+                    <div class="row">
+                        <div class="form-group col-lg-4">
+                            <label class="ss-q-item-label" for="entry_216361736">Name
+                                <span class="ss-required-asterisk" aria-hidden="true">*</span>
+                            </label>
+                            <input type="text" name="entry.216361736" value="" class="form-control" id="entry_216361736" dir="auto" aria-label="Name  " aria-required="true" required="" title="">
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label class="ss-q-item-label" for="entry_1192660011">
+                                <div class="ss-q-title">Email Address
+                                    <span class="ss-required-asterisk" aria-hidden="true">*</span>
                                 </div>
-                                <input type="hidden" name="draftResponse" value="[,,&quot;4094641963436299123&quot;]
-                                ">
-                                <input type="hidden" name="pageHistory" value="0">
-
-                                <input type="hidden" name="fvv" value="0">
-
-
-                                <input type="hidden" name="fbzx" value="4094641963436299123">
-
-                                <div class="ss-item ss-navigate">
-                                    <div id="navigation-table">
-                                        <div class="ss-form-entry" id="navigation-buttons" dir="ltr">
-                                            <div class="col-lg-1">
-                                                <input type="submit" name="submit" value="Submit" id="ss-submit" class="jfk-button jfk-button-action ">
-                                                <div class="ss-password-warning ss-secondary-text"></div>
-                                            </div>
-                                            <div class="col-lg-1">
-                                                <img src="img/loader.gif" id="submitting" style="display: none; width: 25px; height: 25px; ">
-                                            </div>
-                                            <div class="col-lg-10"></div>
-                                        </div>
-                                    </div>
+                            </label>
+                            <input type="text" name="entry.1192660011" value="" class="form-control" id="entry_1192660011" dir="auto" aria-label="Email Address  " aria-required="true" required="" title="">
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label class="ss-q-item-label" for="entry_2129675146">
+                                <div class="ss-q-title">Phone Number
                                 </div>
-                            </div>
-                        </ol>
-                    </form>
-                    <!--/div-->
+                            </label>
+                            <input type="text" name="entry.2129675146" value="" class="form-control" id="entry_2129675146" dir="auto" aria-label="Phone Number  " title="">
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="form-group col-lg-12">
+                            <label class="ss-q-item-label" for="entry_1332990734">
+                                <div class="ss-q-title">Message
+                                    <span class="ss-required-asterisk" aria-hidden="true">*</span>
+                                </div>
+                            </label>
+                            <textarea name="entry.1332990734" rows="6" class="form-control" id="entry_1332990734" dir="auto" aria-label="Message  " aria-required="true" required="" width="800"></textarea>
+                        </div>
+                        <input type="hidden" name="draftResponse" value="[,,&quot;4094641963436299123&quot;]
+                        ">
+                        <input type="hidden" name="pageHistory" value="0">
+
+                        <input type="hidden" name="fvv" value="0">
+
+
+                        <input type="hidden" name="fbzx" value="4094641963436299123">
+
+                        <div class="form-group col-lg-1">
+                            <input type="submit" name="submit" value="Submit" id="ss-submit" class="btn btn-default">
+                        </div>
+                        <div class="form-group col-lg-1">
+                            <img src="img/loader.gif" id="submitting" style="display: none; width: 25px; height: 20px; ">
+                        </div>
+                        <div class="form-group col-lg-10"></div>
+                    </div>
+                </form>
+                <!--/div-->
 
 
 
-                </div>
             </div>
         </div>
-
     </div>
-    <!-- /.container -->
 
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <p>All Rights Reserved &copy; YYFun LLC 2016</p>
-                </div>
+</div>
+<!-- /.container -->
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <p>All Rights Reserved &copy; YYFun LLC 2016</p>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
 
 
-    <!-- Script to Activate the Carousel -->
-    <script>
-        $('.carousel').carousel({
+<!-- Script to Activate the Carousel -->
+<script>
+    $('.carousel').carousel({
         interval: 5000 //changes the speed
     });
 
-    </script>
-    
+</script>
+
 </body>
 
 </html>
