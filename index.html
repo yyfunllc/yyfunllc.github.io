@@ -273,7 +273,9 @@
                 window.alert("Feedback sent. Thank you for your comments!");
             });
             posting.fail( function( jqXHR, textStatus, errorThrown ){
-                window.alert("Submission Fail. Please check Internet Connection");
+                window.alert("Submission Fail. Please check Internet Connection. ");
+                alert(textStatus);
+                alert(errorThrown);
             });
             posting.always( function(){
                 $( "#submitting" ).hide();
