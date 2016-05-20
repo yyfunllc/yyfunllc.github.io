@@ -259,6 +259,7 @@
             var timer = setTimeout(function() {
                 window.alert("Submission Fail. Please check Internet Connection. ");
                 $("#submitting").hide();
+                submitted = false;
             }, 10000);
             event.preventDefault();
             var input = { "entry.216361736" : $( "input[name='entry.216361736']" ).val() ,//name
