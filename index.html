@@ -274,6 +274,7 @@
                 url: postAddr, 
                 method: "GET",
                 data: input,
+                dataType: "jsonp"
             });
             posting.done( function( data ) {
                 window.alert("Feedback sent. Thank you for your comments!");
