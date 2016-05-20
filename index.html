@@ -241,7 +241,6 @@
     <!-- Script to Activate the Carousel -->        
     <script type="text/javascript">
         var postAddr = "https://docs.google.com/forms/d/11K3KKlNXBF9wySfNOsz3FKzz7eu-i1PyAEano8xxlJk/formResponse";
-        var formAddr = "https://docs.google.com/forms/d/11K3KKlNXBF9wySfNOsz3FKzz7eu-i1PyAEano8xxlJk/viewform";
         var submitted = false;
         $( "#googleForm" ).submit( function( event ) {
 
@@ -257,8 +256,11 @@
 
             $("#submitting").show();
 
+            var timer = setTimeout(function() {
+                window.alert("Submission Fail. Please check Internet Connection. ");
+                $("#submitting").hide();
+            }, 10000);
             event.preventDefault();
-            //window.alert($( "input[name='entry.216361736']" ).val() + ", " + $( "input[name='entry.1192660011']" ).val() + ", " + $( "input[name='entry.2129675146']" ).val() + ", " + $( "textarea[name='entry.1332990734']" ).val() );
             var input = { "entry.216361736" : $( "input[name='entry.216361736']" ).val() ,//name
                 "entry.1192660011" : $( "input[name='entry.1192660011']" ).val() , //email
                 "entry.2129675146" : $( "input[name='entry.2129675146']" ).val() , //phone
@@ -290,6 +292,7 @@
                 }
             });
             posting.always( function(){
+                clearTimeout(timer);
                 $( "#submitting" ).hide();
                 submitted = false;
             }); 
