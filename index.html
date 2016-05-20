@@ -280,10 +280,14 @@
                 window.alert("Feedback sent. Thank you for your comments!");
             });
             posting.fail( function( jqXHR, textStatus, errorThrown ){
-                window.alert("Submission Fail. Please check Internet Connection. ");
-                console.log(jqXHR);
-                console.log(textStatus);
-                console.log(errorThrown);
+                if(jqXHR.status == 200){
+                    window.alert("Feedback sent. Thank you for your comments!");
+                } else {
+                    window.alert("Submission Fail. Please check Internet Connection. ");
+                    console.log(jqXHR);
+                    console.log(textStatus);
+                    console.log(errorThrown);
+                }
             });
             posting.always( function(){
                 $( "#submitting" ).hide();
