@@ -274,8 +274,9 @@
             });
             posting.fail( function( jqXHR, textStatus, errorThrown ){
                 window.alert("Submission Fail. Please check Internet Connection. ");
-                alert(textStatus);
-                alert(errorThrown);
+                console.log(jqXHR);
+                console.log(textStatus);
+                console.log(errorThrown);
             });
             posting.always( function(){
                 $( "#submitting" ).hide();
