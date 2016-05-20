@@ -241,6 +241,7 @@
     <!-- Script to Activate the Carousel -->        
     <script type="text/javascript">
         var postAddr = "https://docs.google.com/forms/d/11K3KKlNXBF9wySfNOsz3FKzz7eu-i1PyAEano8xxlJk/formResponse";
+        var formAddr = "https://docs.google.com/forms/d/11K3KKlNXBF9wySfNOsz3FKzz7eu-i1PyAEano8xxlJk/viewform";
         var submitted = false;
         $( "#googleForm" ).submit( function( event ) {
 
@@ -268,7 +269,12 @@
                 "fbzx" : "4094641963436299123"
             };
 
-            var posting = $.post( postAddr, input);
+
+            var posting = $.ajax( {
+                url: postAddr, 
+                method: "GET",
+                data: input,
+            });
             posting.done( function( data ) {
                 window.alert("Feedback sent. Thank you for your comments!");
             });
